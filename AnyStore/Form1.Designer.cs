@@ -36,6 +36,7 @@
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
+            this.lblLoggedInUser = new System.Windows.Forms.Label();
             this.menuStripTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             this.transactionToolStripMenuItem});
             this.menuStripTop.Location = new System.Drawing.Point(0, 0);
             this.menuStripTop.Name = "menuStripTop";
-            this.menuStripTop.Size = new System.Drawing.Size(1224, 30);
+            this.menuStripTop.Size = new System.Drawing.Size(1224, 28);
             this.menuStripTop.TabIndex = 1;
             this.menuStripTop.Text = "menuStrip1";
             // 
@@ -95,17 +96,27 @@
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(13, 42);
+            this.lblUser.Location = new System.Drawing.Point(22, 72);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(36, 16);
             this.lblUser.TabIndex = 2;
             this.lblUser.Text = "User";
+            // 
+            // lblLoggedInUser
+            // 
+            this.lblLoggedInUser.AutoSize = true;
+            this.lblLoggedInUser.Location = new System.Drawing.Point(85, 72);
+            this.lblLoggedInUser.Name = "lblLoggedInUser";
+            this.lblLoggedInUser.Size = new System.Drawing.Size(107, 16);
+            this.lblLoggedInUser.TabIndex = 3;
+            this.lblLoggedInUser.Text = "Shashika  Udara";
             // 
             // frmAdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 616);
+            this.Controls.Add(this.lblLoggedInUser);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStripTop);
@@ -130,6 +141,7 @@
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblLoggedInUser;
     }
 }
 
