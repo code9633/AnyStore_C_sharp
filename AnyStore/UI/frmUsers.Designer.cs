@@ -317,27 +317,27 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(466, 690);
+            this.btnAdd.Location = new System.Drawing.Point(466, 673);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(225, 48);
             this.btnAdd.TabIndex = 24;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(980, 690);
+            this.btnUpdate.Location = new System.Drawing.Point(879, 673);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(226, 48);
             this.btnUpdate.TabIndex = 25;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(1394, 690);
+            this.btnDelete.Location = new System.Drawing.Point(1267, 673);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(202, 48);
             this.btnDelete.TabIndex = 26;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
