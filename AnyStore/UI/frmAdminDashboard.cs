@@ -22,7 +22,7 @@ namespace AnyStore
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsers user = new frmUsers();
-            user.Show();
+            user.Show();    
             
         }
     }
