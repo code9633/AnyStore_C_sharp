@@ -25,12 +25,12 @@ namespace AnyStore.DAL
 
             try
             {
-                // SQL Query to Get data from database
-                string sql = "SELECT * from tbl_users";
+                // SQL Query to Get data from database  
+                String sql = "SELECT * FROM tbl_users";
                 // For executing command
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 // getting Data from Database
-                SqlDataAdapter adapter = new SqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 // Database connection Open
                 conn.Open();
                 // Fill data in our Datatable
@@ -60,9 +60,9 @@ namespace AnyStore.DAL
 
             try
             {
-                string sql = "INSER INTO tbl_users " +
+                String sql = "INSERT INTO tbl_users " +
                     "(first_name, last_name, email, username, password, contact, address, gender, user_type, added_date, added_by)" +
-                    "VALUES (@first_name, @last_name, @email, @username, @password, @contact, @address, @gender, @user_type, @added_date, added_by)";
+                    "VALUES (@first_name, @last_name, @email, @username, @password, @contact, @address, @gender, @user_type, @added_date, @added_by)";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -118,10 +118,12 @@ namespace AnyStore.DAL
 
             try
             {
-                string sql = "UPDATE tbl_userd SET" +
-                    " first_name = @first_name, last_name = @last_name, email = @email, username = @username, password = @password" +
-                    ", contact = @contact, address = @address, gender = @gender, user_type = @user_type, added_date = @added_date, added_by = @added_by" +
-                    "WHERE id = @id";
+                String sql = "UPDATE tbl_users SET " +
+                             "first_name = @first_name, last_name = @last_name, email = @email, username = @username, " +
+                             "password = @password, contact = @contact, address = @address, gender = @gender, " +
+                             "user_type = @user_type, added_date = @added_date, added_by = @added_by " +
+                             "WHERE id = @id";
+
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -140,16 +142,7 @@ namespace AnyStore.DAL
 
                 conn.Open();
 
-                int rows = cmd.ExecuteNonQuery();
-
-                if (rows > 0)
-                {
-                    isSuccess = true;
-                }
-                else
-                {
-                    isSuccess = false;
-                }
+                isSuccess = cmd.ExecuteNonQuery() > 0;
 
             }
             catch(Exception ex)
@@ -164,6 +157,7 @@ namespace AnyStore.DAL
             return isSuccess;
         }
         #endregion
+
         #region Delete Data from Database
         public bool Delete(userBLL u)
         {
@@ -172,23 +166,13 @@ namespace AnyStore.DAL
 
             try
             {
-                string sql = "DELETE FROM tbl_users WHERE id = @id";
+                String sql = "DELETE FROM tbl_users WHERE id = @id";
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@id", u.id);
                 conn.Open();
 
-                int rows = cmd.ExecuteNonQuery();
-                if (rows > 0)
-                {
-                    // Query Successfull
-                    isSuccess = true;
-                }
-                else
-                {
-                    // Query Failed
-                    isSuccess = false;
-                }   
+                isSuccess = cmd.ExecuteNonQuery() > 0;
 
             }
             catch (Exception ex)
@@ -201,6 +185,46 @@ namespace AnyStore.DAL
             }
 
             return isSuccess;
+        }
+        #endregion
+
+        #region Search User on Database using Keywords
+        public DataTable Search(string keywords)
+        {
+            // Static method to connect Database
+            SqlConnection conn = new SqlConnection(myconsstrng);
+            // To hold the data from Database
+            DataTable dt = new DataTable();
+
+            try
+            {
+                // SQL Query to Get data from database  
+                String sql = "SELECT * FROM tbl_users WHERE id LIKE '%"+keywords+"%' OR first_name LIKE '%"+ keywords+"%' " +
+                    "OR last_name LIKE '%"+keywords+"%' OR username LIKE '%"+keywords+"%'";
+
+                // For executing command
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                // getting Data from Database
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                // Database connection Open
+                conn.Open();
+                // Fill data in our Datatable
+                adapter.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                // Throw Message if any error occur
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Closing connection
+                conn.Close();
+            }
+
+            // Return the value in Datatable
+            return dt;
         }
         #endregion
 
